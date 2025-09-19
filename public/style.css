@@ -1,0 +1,42 @@
+nav {
+	padding: 10px;
+	background-color: rgb(250, 250, 250);
+}
+
+h2 {
+	text-align: center;
+}
+
+form {
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5vh;
+}
+
+td,
+th {
+	text-align: center !important;
+}
+
+li>a,
+li>strong>a {
+	color: rgb(61, 61, 61);
+}
+.error {
+	color: rgb(233, 48, 48);
+	font-size: 1.2rem;
+	text-align: center;
+}
+li>a>img {
+	width: 4.5vw;
+	border-radius: 50%;
+}
+.group {
+	display: flex;
+	justify-content:flex-end;
+	a {
+		margin-left: 1vw;
+		margin-right: 1vw
+	}
+}
