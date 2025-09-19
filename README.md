@@ -28,5 +28,6 @@ php -S 127.0.0.1:8000
 
 # dans le navigateur internet saisir l'url suivante 
 http://127.0.0.1:8000
-NB : si le dossier qui contient celle-ci s'appelle bien correction
+NB : Attention de bien être à la racine du dossier pour démarrer le serveur PHP
+Et que la BDD soit créée et démarrée
 ```
