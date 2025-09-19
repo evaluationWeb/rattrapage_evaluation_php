@@ -6,7 +6,7 @@
 
 - **1 Cloner le repository à la racine du serveur apache**
 ```sh
-git clone https://github.com/evaluationWeb/evaluation_php_correction.git correction.git
+git clone https://github.com/evaluationWeb/rattrapage_evaluation_php.git
 ```
 
 - **2 Création de la BDD** :
