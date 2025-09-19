@@ -6,16 +6,24 @@ include "utils/tools.php";
 include "env.php";
 include "utils/bdd.php";
 include "model/note.php";
+
 //test si l'utilisateur n'est pas connecté
 if (!isset($_SESSION["connected"])) {
+    //redirection vers index.php
     header("Location: index.php");
 }
-//récupération de l'idUser
+
+//récupération de l'idUser depuis la SESSION PHP
 $idUser = $_SESSION["idUser"];
+
+//récupération des notes de l'utilisateur
 try {
-    //récupération des notes de l'utilisateur
+    //appel de la méthode findAllNote (model note) pour récupérer la liste des notes
     $notes = findAllNote($idUser);
-} catch (Exception $e) {}
+} catch (Exception $e) {
+    //Tableau erreur SQL
+    $notes["error"] = "La base de donnés ne répond pas";
+}
 
 
 ?>
@@ -42,18 +50,22 @@ try {
                 <th>content</th>
                 <th>Date de création</th>
             </thead>
-            <!-- Boucler sur le tableau de books -->
-            <?php foreach ($notes as $note): ?>
-                <tr>
-                    <td><?= $note["title"] ?> </td>
-                    <td>
-                        <?= $note["content"] ?>
-                    </td>
-                    <td>
-                        <?= $note["created_at"] ?>
-                    </td>
-                </tr>
-            <?php endforeach ?>
+            <?php if (!empty($notes["error"])) :?>
+                <p class="error"> <?=$notes["error"]?></p>
+            <?php else : ?>
+                <!-- Boucler sur le tableau de books -->
+                <?php foreach ($notes as $note): ?>
+                    <tr>
+                        <td><?= $note["title"] ?> </td>
+                        <td>
+                            <?= $note["content"] ?>
+                        </td>
+                        <td>
+                            <?= $note["created_at"] ?>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+            <?php endif ?>
         </table>
     </main>
 </body>

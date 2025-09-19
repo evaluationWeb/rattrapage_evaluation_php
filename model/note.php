@@ -19,7 +19,7 @@
             $req->bindParam(1, $note["title"], PDO::PARAM_STR);
             $req->bindParam(2, $note["content"], PDO::PARAM_STR);
             $req->bindParam(3, $note["created_at"], PDO::PARAM_STR);
-            $req->bindParam(5, $note["idUser"], PDO::PARAM_INT);
+            $req->bindParam(4, $note["idUser"], PDO::PARAM_INT);
             //exécution de la requête
             $req->execute();
         } catch(Exception $e) {
@@ -38,7 +38,7 @@
         try {
             //Requête SQL avec 2 jointures categoy et users
             $request = "SELECT n.id_note, n.title, n.content, n.created_at, u.id_users FROM note AS n
-            INNER JOIN users AS u ON n.id_users = u.id_users WHERE n.id_users = ? ORDER BY b.title";
+            INNER JOIN users AS u ON n.id_users = u.id_users WHERE n.id_users = ? ORDER BY n.title";
             //préparation
             $req = connectBDD()->prepare($request);
             //bind du paramètre idUsers

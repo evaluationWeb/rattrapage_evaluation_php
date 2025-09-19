@@ -7,7 +7,7 @@ include "env.php";
 include "utils/bdd.php";
 include "model/note.php";
 
-//Appel de la méthode addNote pour ajouter la note en BDD
+//Appel de la méthode addNote (model note) pour ajouter la note en BDD
 $message = addNote();
 
 
@@ -19,6 +19,7 @@ function addNote(): string
 {
     //test si l'utilisateur n'est pas connecté
     if (!isset($_SESSION["connected"])) {
+        //redirection vers index.php
         header("Location: index.php");
     }
 
@@ -38,7 +39,7 @@ function addNote(): string
             $note = [];
             $note["title"] = $title;
             $note["content"] = $content;
-            $note["publicationDate"] = $created_at;
+            $note["created_at"] = $created_at;
             $note["idUser"] = $idUser;
             //appel de la méthode pour ajouter une note en BDD (bloc try catch)
             try {
