@@ -3,6 +3,7 @@
      * Méthode qui vérifie si un user existe en BDD avec son email
      * @param email string email de l'utilisateur
      * @return bool true si existe sion false
+     * @throws bool false si erreur SQL
      */
     function isUserExistByEmail(string $email): bool {
         try {
@@ -27,10 +28,12 @@
                 return false;
             }
     }
-        /**
+    
+    /**
      * Méthode qui  ajoute un user en BDD
      * @param array $user tableau de l'utilisateur
      * @return void ne retrourne rien
+     * @throws Exception erreur SQL 
      */
     function saveUser(array $user): void {
         try {
